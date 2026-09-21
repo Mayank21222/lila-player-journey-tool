@@ -53,6 +53,6 @@ The generated `data.json` and `minimaps/` are deployable artifacts and should be
 
 ## Data and repository scope
 
-The hosted repository should include the application source, generated `data.json`, minimaps, tests, build script, and deployment configuration. The original assignment brief (`Product Engineer- Written Test- LILA.docx`) is intentionally excluded. Raw Parquet input remains local and is excluded from deployment and version control; it can be regenerated into the committed browser artifact with `npm run build:data`.
+The hosted repository includes the application source, supplied `player_data/` Parquet input and dataset README, generated `data.json`, minimaps, tests, build script, and deployment configuration. The original assignment brief (`Product Engineer- Written Test- LILA.docx`) is intentionally excluded. Raw Parquet input is included for reproducibility and portfolio review, but remains excluded from the Vercel upload through `.vercelignore`; the browser uses the generated artifact. Regenerate it with `npm run build:data`.
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) and [INSIGHTS.md](INSIGHTS.md) for implementation decisions and analysis of the supplied telemetry.
