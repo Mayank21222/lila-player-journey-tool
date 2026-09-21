@@ -1,0 +1,7 @@
+.DS_Store
+node_modules
+.vercel
+__pycache__
+.pytest_cache
+player_data/
+Product Engineer- Written Test- LILA.docx

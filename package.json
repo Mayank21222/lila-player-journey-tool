@@ -1,0 +1,12 @@
+{
+  "name": "lila-player-journey-tool",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "echo Static site ready",
+    "build:data": "python3 scripts/build_data.py",
+    "dev": "python3 -m http.server 4173",
+    "start": "python3 -m http.server 4173"
+  }
+}

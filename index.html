@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b111a" />
+    <title>LILA BLACK · Player Journeys</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="loading"><div class="loading-card"><div id="loadingMessage">Loading telemetry…</div><button id="retry" class="tool-btn" hidden>Retry</button></div></div>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand"><div class="mark">LB</div><div><div class="eyebrow">LILA BLACK / LEVEL DESIGN</div><h1>Player Journey Observatory</h1></div></div>
+        <div class="subtle">5 days · 1,243 journeys · production telemetry</div>
+      </header>
+      <main class="workspace">
+        <aside class="panel sidebar">
+          <div class="section"><div class="section-title scope-heading"><span>Scope</span><button id="resetFilters" class="icon-btn" type="button">Reset</button></div><label>Map</label><div class="select-combo" data-select="map"><button id="mapFilter" class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span>All maps</span><span class="chevron">⌄</span></button><div class="combo-menu" hidden role="listbox"></div></div></div>
+          <div class="section"><label>Capture date</label><div class="select-combo" data-select="date"><button id="dateFilter" class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span>All dates</span><span class="chevron">⌄</span></button><div class="combo-menu" hidden role="listbox"></div></div></div>
+          <div class="section"><label for="matchFilter">Match</label><div class="combo"><input id="matchFilter" type="search" placeholder="All matches" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="matchOptions" /><div id="matchOptions" class="combo-menu" hidden></div></div></div>
+          <div class="section"><label>Player / bot</label><div class="select-combo" data-select="player"><button id="playerFilter" class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span>All players</span><span class="chevron">⌄</span></button><div class="combo-menu" hidden role="listbox"></div></div></div>
+          <div class="divider"></div>
+          <div class="section"><div class="section-title">Heatmap layer</div><div class="select-combo" data-select="layer"><button id="layer" class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span>Traffic density</span><span class="chevron">⌄</span></button><div class="combo-menu" hidden role="listbox"></div></div><div class="toolbar-actions"><button class="tool-btn active" data-layer="traffic">Traffic</button><button class="tool-btn" data-layer="kills">Kills</button><button class="tool-btn" data-layer="deaths">Deaths</button></div><p id="heatmapNote" class="footnote">All dates · normalized intensity</p></div>
+          <div class="section"><div class="section-title">Display</div><label class="check"><input id="showHumans" type="checkbox" checked /> Human paths</label><label class="check"><input id="showBots" type="checkbox" checked /> Bot paths</label><label class="check"><input id="showPaths" type="checkbox" checked /> Movement trails</label><label class="check"><input id="showMarkers" type="checkbox" checked /> Event markers</label><label>Playback speed</label><div class="select-combo" data-select="speed"><button id="speed" class="select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span>1×</span><span class="chevron">⌄</span></button><div class="combo-menu" hidden role="listbox"></div></div></div>
+          <div class="section"><div class="section-title">Reading the map</div><p class="footnote">Select one match to reveal player paths and event markers. Overview mode aggregates all journeys in the current map/date scope.</p></div>
+        </aside>
+        <section class="panel map-stage">
+          <div class="map-toolbar"><div class="map-title"><h2 id="mapName">Map</h2><span id="matchCount">—</span></div><div class="subtle">World X/Z projected to minimap UV coordinates</div></div>
+          <div class="map-wrap"><div id="mapViewport" class="map-viewport"><img id="map" draggable="false" alt="Selected game map minimap" /><canvas id="overlay"></canvas></div><div class="zoom-controls" aria-label="Map zoom controls"><button id="zoomOut" class="zoom-btn" type="button" title="Zoom out" aria-label="Zoom out">−</button><button id="zoomReset" class="zoom-level" type="button" title="Reset zoom">100%</button><button id="zoomIn" class="zoom-btn" type="button" title="Zoom in" aria-label="Zoom in">+</button></div><div id="emptyState" class="empty-state" hidden><strong>No matches in this scope</strong><span>Try resetting the map, date, or match filter.</span><button id="emptyReset" class="tool-btn" type="button">Reset filters</button></div><div id="legend" class="legend"></div></div>
+          <div class="playback"><div class="timeline-row"><button id="play" class="play" title="Select a match to enable playback" aria-label="Play selected match" disabled>▶</button><span id="currentTime" class="time">—</span><input id="timeline" type="range" min="0" max="1" value="0" disabled /><span id="endTime" class="time">—</span></div><div id="playbackHint" class="subtle" style="margin:8px 0 0 46px">Select a match to enable playback.</div></div>
+        </section>
+        <aside class="panel inspector">
+          <div class="section"><div class="section-title">Current view</div><div id="selection" class="match-card"><strong>Loading</strong><span>—</span></div></div>
+          <div class="stats"><div class="stat"><b id="statMatches">—</b><span>matches</span></div><div class="stat"><b id="statPlayers">—</b><span>player journeys</span></div><div class="stat"><b id="statEvents">—</b><span>discrete events</span></div><div class="stat"><b>3</b><span>maps</span></div></div>
+          <div class="section"><div class="section-title">Event key</div><p class="footnote"><span style="color:#ffad5c">●</span> Kill / bot kill<br><span style="color:#ff6d75">●</span> Death / bot death<br><span style="color:#ff5b99">●</span> Storm death<br><span style="color:#b49aff">●</span> Loot pickup</p></div>
+          <div class="section"><div class="section-title">Data note</div><p class="footnote">Humans are UUIDs; bots use numeric IDs. The supplied maps have different native image sizes, so projection uses each image's intrinsic dimensions.</p></div>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
