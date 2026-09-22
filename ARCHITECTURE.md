@@ -54,6 +54,6 @@ This separation keeps route geometry readable even when a path crosses a dense h
 
 ## Interaction model
 
-Filters update the active scope together and reset invalid dependent selections. Selecting exactly one match reveals its playback timeline and player options; overview mode deliberately leaves playback disabled. Custom menus close on outside click or Escape. When the map is zoomed above 100%, pointer capture keeps drag-to-pan stable, and panning is bounded so the map cannot be lost outside the viewport.
+Filters update the active scope together and reset invalid dependent selections. Selecting exactly one match reveals its playback timeline and player options; overview mode deliberately leaves playback disabled. A path-status pill above the map counts the visible human and bot paths and updates with the player filter and the display toggles. Custom menus close on outside click or Escape. When the map is zoomed above 100%, pointer capture keeps drag-to-pan stable, and panning is bounded so the map cannot be lost outside the viewport.
 
 

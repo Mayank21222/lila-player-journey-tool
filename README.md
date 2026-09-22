@@ -47,6 +47,7 @@ The generated `data.json` and `minimaps/` are deployable artifacts and should be
 - The match control is a searchable custom combobox; map, date, player, layer, and speed controls use the same accessible custom-menu interaction.
 - Playback is match-relative. The app detects the supplied compact timestamp units and presents them as real-time match seconds, so `1×` advances one displayed second per real second; `0.5×`, `2×`, and `4×` scale from that baseline.
 - Movement paths are interpolated between telemetry samples for smooth playback and use high-contrast neon foreground colors distinct from the heatmap layers and event markers.
+- A live path-status readout above the map reports how many human and bot movement paths are currently visible, reacting to the player filter and the human/bot/path display toggles; a dashed preview shows bot routes.
 - Map navigation includes 50%–300% zoom, reset, mouse-wheel zoom, keyboard shortcuts (`+`, `-`, `0`), and pointer drag-to-pan while zoomed.
 - Heatmap layers use separate visual families: yellow-green traffic, orange kills, and red deaths. Path lines and event markers are identified separately in the map legend.
 - Map projection uses the README's map-specific scale/origin and each minimap's actual intrinsic dimensions.
